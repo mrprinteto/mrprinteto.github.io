@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@mrprinteto - Links</title>
+    <title>MrPrinteto - Links</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -16,7 +16,8 @@
         
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: url(https://images.unsplash.com/photo-1523821741446-edb2b68bb7a0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) no-repeat center center fixed;
+            background: url(https://images.unsplash.com/photo-1523821741446-edb2b68bb7a0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) no-repeat center center fixed;
+            background-size: cover;
             color: #ffffff;
             min-height: 40vh;
             padding: 20px;
@@ -38,6 +39,7 @@
             background: #3a3a3a;
             padding: 40px 30px;
             border: 1px solid  #404040;
+            backdrop-filter: none;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             animation: fadeIn 0.6s ease-out;
             border-radius: 20px;
@@ -65,19 +67,58 @@
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 12px;
-            background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+            background: linear-gradient(135deg, #10b981, #34d399);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-shadow: 2px 4px 7px rgba(0, 0, 0, 0.1);
         }
         
         .profile p {
             color: #ffffff;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 400;
             line-height: 1.5;
         }
         
+        .heroes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .hero {
+            display: block;
+            width: 100%;
+            min-height: 200px;
+            position: relative;
+            align-items: flex-end;
+            background-size: cover !important;
+            background-position: center !important;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .hero-link {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+            text-decoration: none;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+        }
+
+        .hero-title {
+            color: white !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
         .links {
             display: flex;
             flex-direction: column;
@@ -89,11 +130,13 @@
             text-decoration: none;
             background: #3a3a3a;
             border: 2px solid#8b5cf6;
-            padding: 20px 24px;
+            padding: 16px 16px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
             border-radius: 64px;
+            padding: 0;
+
         }
         
         .link::before {
@@ -118,12 +161,16 @@
             background: transparent;
             scale: 1.02;
         }
-        
+
+        .link-text {
+            padding: 10px 16px;
+        }
+
         .link-title {
             font-size: 1rem;
             font-weight: 600;
             color: #ffffff;
-            margin-bottom: 4px;
+            margin: 2px 0px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -158,7 +205,7 @@
         
         .social-icon:hover {
             transform: translateY(-2px);
-            color: #8b5cf6;
+            color: #10b981;
         }
         
         .external-icon {
@@ -170,6 +217,18 @@
         
         .link:hover .external-icon {
             opacity: 1;
+        }
+
+        *::-webkit-scrollbar {
+            width: 6px;
+        }
+        *::-webkit-scrollbar-thumb {
+            background-color: #ddd;
+            border-radius: 4px;
+        }
+        *::-webkit-scrollbar-track {
+            margin-top: 4px;
+            background-color: transparent;
         }
         
         @keyframes fadeIn {
@@ -200,10 +259,6 @@
             .profile h1 {
                 font-size: 1.75rem;
             }
-            
-            .link {
-                padding: 18px 20px;
-            }
         }
     </style>
 </head>
@@ -211,33 +266,33 @@
     <div class="container rounded-2xl">
         <div class="profile">
             <div class="avatar rounded-full">
-                <img src="https://ugc.production.linktr.ee/a8787134-7c63-4013-a731-8bbce8b84465_Isotipo-MR-Printeto-blanco.png?io=true&size=avatar-v3_0" alt="@mrprinteto" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxMjAiIGZpbGw9IiM0QzRDNEMiLz48Y2lyY2xlIGN4PSI2MCIgY3k9IjQ1IiByPSIyMCIgZmlsbD0iIzdBN0E3QSIvPjxwYXRoIGQ9Ik0yMCA5NUMyMCA4MC44NTc2IDMxLjQzMTUgNzAgNDUgNzBINzVDODguNTY4NSA3MCA5MCA4MC44NTc2IDEwMCA5NVYxMDBIMjBWOTVaIiBmaWxsPSIjN0E3QTdBIi8+PC9zdmc+'" />
+                <img src="https://ugc.production.linktr.ee/a8787134-7c63-4013-a731-8bbce8b84465_Isotipo-MR-Printeto-blanco.png?io=true&size=avatar-v3_0" alt="MrPrinteto" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxMjAiIGZpbGw9IiM0QzRDNEMiLz48Y2lyY2xlIGN4PSI2MCIgY3k9IjQ1IiByPSIyMCIgZmlsbD0iIzdBN0E3QSIvPjxwYXRoIGQ9Ik0yMCA5NUMyMCA4MC44NTc2IDMxLjQzMTUgNzAgNDUgNzBINzVDODguNTY4NSA3MCA5MCA4MC44NTc2IDEwMCA5NVYxMDBIMjBWOTVaIiBmaWxsPSIjN0E3QTdBIi8+PC9zdmc+'" />
             </div>
             <h1>
-            @mrprinteto
-            <svg style="padding-top: 10px" width="30px" height="30px" viewBox="0 0 24 24"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M9.5924 3.20027C9.34888 3.4078 9.22711 3.51158 9.09706 3.59874C8.79896 3.79854 8.46417 3.93721 8.1121 4.00672C7.95851 4.03705 7.79903 4.04977 7.48008 4.07522C6.6787 4.13918 6.278 4.17115 5.94371 4.28923C5.17051 4.56233 4.56233 5.17051 4.28923 5.94371C4.17115 6.278 4.13918 6.6787 4.07522 7.48008C4.04977 7.79903 4.03705 7.95851 4.00672 8.1121C3.93721 8.46417 3.79854 8.79896 3.59874 9.09706C3.51158 9.22711 3.40781 9.34887 3.20027 9.5924C2.67883 10.2043 2.4181 10.5102 2.26522 10.8301C1.91159 11.57 1.91159 12.43 2.26522 13.1699C2.41811 13.4898 2.67883 13.7957 3.20027 14.4076C3.40778 14.6511 3.51158 14.7729 3.59874 14.9029C3.79854 15.201 3.93721 15.5358 4.00672 15.8879C4.03705 16.0415 4.04977 16.201 4.07522 16.5199C4.13918 17.3213 4.17115 17.722 4.28923 18.0563C4.56233 18.8295 5.17051 19.4377 5.94371 19.7108C6.278 19.8288 6.6787 19.8608 7.48008 19.9248C7.79903 19.9502 7.95851 19.963 8.1121 19.9933C8.46417 20.0628 8.79896 20.2015 9.09706 20.4013C9.22711 20.4884 9.34887 20.5922 9.5924 20.7997C10.2043 21.3212 10.5102 21.5819 10.8301 21.7348C11.57 22.0884 12.43 22.0884 13.1699 21.7348C13.4898 21.5819 13.7957 21.3212 14.4076 20.7997C14.6511 20.5922 14.7729 20.4884 14.9029 20.4013C15.201 20.2015 15.5358 20.0628 15.8879 19.9933C16.0415 19.963 16.201 19.9502 16.5199 19.9248C17.3213 19.8608 17.722 19.8288 18.0563 19.7108C18.8295 19.4377 19.4377 18.8295 19.7108 18.0563C19.8288 17.722 19.8608 17.3213 19.9248 16.5199C19.9502 16.201 19.963 16.0415 19.9933 15.8879C20.0628 15.5358 20.2015 15.201 20.4013 14.9029C20.4884 14.7729 20.5922 14.6511 20.7997 14.4076C21.3212 13.7957 21.5819 13.4898 21.7348 13.1699C22.0884 12.43 22.0884 11.57 21.7348 10.8301C21.5819 10.5102 21.3212 10.2043 20.7997 9.5924C20.5922 9.34887 20.4884 9.22711 20.4013 9.09706C20.2015 8.79896 20.0628 8.46417 19.9933 8.1121C19.963 7.95851 19.9502 7.79903 19.9248 7.48008C19.8608 6.6787 19.8288 6.278 19.7108 5.94371C19.4377 5.17051 18.8295 4.56233 18.0563 4.28923C17.722 4.17115 17.3213 4.13918 16.5199 4.07522C16.201 4.04977 16.0415 4.03705 15.8879 4.00672C15.5358 3.93721 15.201 3.79854 14.9029 3.59874C14.7729 3.51158 14.6511 3.40781 14.4076 3.20027C13.7957 2.67883 13.4898 2.41811 13.1699 2.26522C12.43 1.91159 11.57 1.91159 10.8301 2.26522C10.5102 2.4181 10.2043 2.67883 9.5924 3.20027ZM16.3735 9.86314C16.6913 9.5453 16.6913 9.03 16.3735 8.71216C16.0557 8.39433 15.5403 8.39433 15.2225 8.71216L10.3723 13.5624L8.77746 11.9676C8.45963 11.6498 7.94432 11.6498 7.62649 11.9676C7.30866 12.2854 7.30866 12.8007 7.62649 13.1186L9.79678 15.2889C10.1146 15.6067 10.6299 15.6067 10.9478 15.2889L16.3735 9.86314Z" fill="#2483ff"></path> </g></svg>
+            MrPrinteto
+            <svg style="margin-bottom:-3px" width="26px" height="26px" viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="0.00024000000000000003"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.24000000000000005"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M9.5924 3.20027C9.34888 3.4078 9.22711 3.51158 9.09706 3.59874C8.79896 3.79854 8.46417 3.93721 8.1121 4.00672C7.95851 4.03705 7.79903 4.04977 7.48008 4.07522C6.6787 4.13918 6.278 4.17115 5.94371 4.28923C5.17051 4.56233 4.56233 5.17051 4.28923 5.94371C4.17115 6.278 4.13918 6.6787 4.07522 7.48008C4.04977 7.79903 4.03705 7.95851 4.00672 8.1121C3.93721 8.46417 3.79854 8.79896 3.59874 9.09706C3.51158 9.22711 3.40781 9.34887 3.20027 9.5924C2.67883 10.2043 2.4181 10.5102 2.26522 10.8301C1.91159 11.57 1.91159 12.43 2.26522 13.1699C2.41811 13.4898 2.67883 13.7957 3.20027 14.4076C3.40778 14.6511 3.51158 14.7729 3.59874 14.9029C3.79854 15.201 3.93721 15.5358 4.00672 15.8879C4.03705 16.0415 4.04977 16.201 4.07522 16.5199C4.13918 17.3213 4.17115 17.722 4.28923 18.0563C4.56233 18.8295 5.17051 19.4377 5.94371 19.7108C6.278 19.8288 6.6787 19.8608 7.48008 19.9248C7.79903 19.9502 7.95851 19.963 8.1121 19.9933C8.46417 20.0628 8.79896 20.2015 9.09706 20.4013C9.22711 20.4884 9.34887 20.5922 9.5924 20.7997C10.2043 21.3212 10.5102 21.5819 10.8301 21.7348C11.57 22.0884 12.43 22.0884 13.1699 21.7348C13.4898 21.5819 13.7957 21.3212 14.4076 20.7997C14.6511 20.5922 14.7729 20.4884 14.9029 20.4013C15.201 20.2015 15.5358 20.0628 15.8879 19.9933C16.0415 19.963 16.201 19.9502 16.5199 19.9248C17.3213 19.8608 17.722 19.8288 18.0563 19.7108C18.8295 19.4377 19.4377 18.8295 19.7108 18.0563C19.8288 17.722 19.8608 17.3213 19.9248 16.5199C19.9502 16.201 19.963 16.0415 19.9933 15.8879C20.0628 15.5358 20.2015 15.201 20.4013 14.9029C20.4884 14.7729 20.5922 14.6511 20.7997 14.4076C21.3212 13.7957 21.5819 13.4898 21.7348 13.1699C22.0884 12.43 22.0884 11.57 21.7348 10.8301C21.5819 10.5102 21.3212 10.2043 20.7997 9.5924C20.5922 9.34887 20.4884 9.22711 20.4013 9.09706C20.2015 8.79896 20.0628 8.46417 19.9933 8.1121C19.963 7.95851 19.9502 7.79903 19.9248 7.48008C19.8608 6.6787 19.8288 6.278 19.7108 5.94371C19.4377 5.17051 18.8295 4.56233 18.0563 4.28923C17.722 4.17115 17.3213 4.13918 16.5199 4.07522C16.201 4.04977 16.0415 4.03705 15.8879 4.00672C15.5358 3.93721 15.201 3.79854 14.9029 3.59874C14.7729 3.51158 14.6511 3.40781 14.4076 3.20027C13.7957 2.67883 13.4898 2.41811 13.1699 2.26522C12.43 1.91159 11.57 1.91159 10.8301 2.26522C10.5102 2.4181 10.2043 2.67883 9.5924 3.20027ZM16.3735 9.86314C16.6913 9.5453 16.6913 9.03 16.3735 8.71216C16.0557 8.39433 15.5403 8.39433 15.2225 8.71216L10.3723 13.5624L8.77746 11.9676C8.45963 11.6498 7.94432 11.6498 7.62649 11.9676C7.30866 12.2854 7.30866 12.8007 7.62649 13.1186L9.79678 15.2889C10.1146 15.6067 10.6299 15.6067 10.9478 15.2889L16.3735 9.86314Z" fill="#3e6bfe"></path> </g></svg>
             </h1>
-            <p>Impresión 3D y Post-procesado</p>
+            <p>Impresión 3D y corte/grabado láser</p>
         </div>
-        
+
         
         <div class="socials mb-8">
             <div class="flex justify-center space-x-4">
-                
-                    <a href="https://www.tiktok.com/@mrprinteto" class="social-icon text-gray-400 hover:text-white transition-colors duration-300" target="_blank" rel="noopener noreferrer" title="Tiktok">
-                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-                    </a>
                 
                     <a href="https://www.instagram.com/mrprinteto/" class="social-icon text-gray-400 hover:text-white transition-colors duration-300" target="_blank" rel="noopener noreferrer" title="Instagram">
                         <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                     </a>
                 
-                    <a href="https://threads.net/@mrprinteto" class="social-icon text-gray-400 hover:text-white transition-colors duration-300" target="_blank" rel="noopener noreferrer" title="Threads">
-                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M17.692 11.124a9 9 0 0 0-.315-.143c-.185-3.414-2.05-5.368-5.182-5.388h-.042c-1.873 0-3.431.8-4.39 2.255l1.722 1.181c.716-1.087 1.84-1.318 2.669-1.318h.028c1.031.006 1.81.306 2.313.89.367.426.612 1.015.733 1.757a13.2 13.2 0 0 0-2.96-.143c-2.977.172-4.892 1.909-4.763 4.322.065 1.223.675 2.276 1.717 2.964.88.582 2.015.866 3.195.802 1.557-.085 2.778-.68 3.63-1.766.648-.825 1.057-1.894 1.238-3.241.742.448 1.292 1.037 1.596 1.746.516 1.204.547 3.183-1.068 4.797-1.415 1.413-3.116 2.025-5.686 2.043-2.851-.02-5.008-.935-6.41-2.717-1.313-1.67-1.991-4.08-2.016-7.165.025-3.085.703-5.496 2.016-7.165 1.402-1.782 3.558-2.696 6.41-2.717 2.872.02 5.065.94 6.521 2.73.714.879 1.252 1.983 1.607 3.27l2.018-.538c-.43-1.585-1.107-2.95-2.027-4.083C18.38 1.2 15.65.024 12.134 0h-.014C8.61.024 5.912 1.205 4.099 3.51c-1.614 2.05-2.446 4.904-2.474 8.482v.016c.028 3.578.86 6.431 2.474 8.482 1.813 2.305 4.511 3.486 8.02 3.51h.015c3.12-.022 5.319-.838 7.13-2.649 2.371-2.368 2.3-5.336 1.519-7.158-.561-1.307-1.63-2.368-3.09-3.07m-5.387 5.064c-1.305.074-2.66-.512-2.728-1.766-.05-.93.662-1.969 2.808-2.092q.369-.022.724-.021c.78 0 1.508.075 2.171.22-.247 3.088-1.697 3.59-2.975 3.66"/></svg>
+                    <a href="https://www.tiktok.com/@mrprinteto" class="social-icon text-gray-400 hover:text-white transition-colors duration-300" target="_blank" rel="noopener noreferrer" title="Tiktok">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
                     </a>
                 
                     <a href="https://x.com/mrprinteto" class="social-icon text-gray-400 hover:text-white transition-colors duration-300" target="_blank" rel="noopener noreferrer" title="Twitter">
                         <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                
+                    <a href="https://threads.net/@mrprinteto" class="social-icon text-gray-400 hover:text-white transition-colors duration-300" target="_blank" rel="noopener noreferrer" title="Threads">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M17.692 11.124a9 9 0 0 0-.315-.143c-.185-3.414-2.05-5.368-5.182-5.388h-.042c-1.873 0-3.431.8-4.39 2.255l1.722 1.181c.716-1.087 1.84-1.318 2.669-1.318h.028c1.031.006 1.81.306 2.313.89.367.426.612 1.015.733 1.757a13.2 13.2 0 0 0-2.96-.143c-2.977.172-4.892 1.909-4.763 4.322.065 1.223.675 2.276 1.717 2.964.88.582 2.015.866 3.195.802 1.557-.085 2.778-.68 3.63-1.766.648-.825 1.057-1.894 1.238-3.241.742.448 1.292 1.037 1.596 1.746.516 1.204.547 3.183-1.068 4.797-1.415 1.413-3.116 2.025-5.686 2.043-2.851-.02-5.008-.935-6.41-2.717-1.313-1.67-1.991-4.08-2.016-7.165.025-3.085.703-5.496 2.016-7.165 1.402-1.782 3.558-2.696 6.41-2.717 2.872.02 5.065.94 6.521 2.73.714.879 1.252 1.983 1.607 3.27l2.018-.538c-.43-1.585-1.107-2.95-2.027-4.083C18.38 1.2 15.65.024 12.134 0h-.014C8.61.024 5.912 1.205 4.099 3.51c-1.614 2.05-2.446 4.904-2.474 8.482v.016c.028 3.578.86 6.431 2.474 8.482 1.813 2.305 4.511 3.486 8.02 3.51h.015c3.12-.022 5.319-.838 7.13-2.649 2.371-2.368 2.3-5.336 1.519-7.158-.561-1.307-1.63-2.368-3.09-3.07m-5.387 5.064c-1.305.074-2.66-.512-2.728-1.766-.05-.93.662-1.969 2.808-2.092q.369-.022.724-.021c.78 0 1.508.075 2.171.22-.247 3.088-1.697 3.59-2.975 3.66"/></svg>
                     </a>
                 
                     <a href="https://discord.gg/g9c7Nhrkea" class="social-icon text-gray-400 hover:text-white transition-colors duration-300" target="_blank" rel="noopener noreferrer" title="Discord">
@@ -247,69 +302,40 @@
             </div>
         </div>
         
+
+        
+        <div class="heroes">
+            
+                <div class="hero" style="background-image: url('https://ugc.production.linktr.ee/4cb61123-d80f-4781-8a42-33c30a034b5b_image.png?io=true&size=thumbnail-feature-v1_0');">
+                    <a href="https://tidd.ly/40M7Y58" class="hero-link" target="_blank" rel="noopener noreferrer">
+                        <h2 class="hero-title">NUEVA Falcon A1 Pro      </h2>
+                    </a>
+                </div>
+            
+                <div class="hero" style="background-image: url('https://wecreat.com/cdn/shop/files/vision_pro___17570000_1.png?v=1742526128&width=858');">
+                    <a href="https://wecreateu.sjv.io/RGorvR" class="hero-link" target="_blank" rel="noopener noreferrer">
+                        <h2 class="hero-title">WeCreat VISION 20W     -100€ "mrprinteto"</h2>
+                    </a>
+                </div>
+            
+        </div>
+        
         
         <div class="links">
-            
-                <a href="https://www.mrprinteto.com" class="link rounded-xl" target="_blank" rel="noopener noreferrer">
-                    <div class="link-content" style="display: flex; align-items: center;">
-                        <div class="link-icon"
-                            style="width: 24px; height: 24px; margin-right: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <img src="https://flowbite.com/docs/images/logo.svg" alt="NUESTRA TIENDA icon"
-                                class="external-icon" style="width: 100%; height: 100%; border-radius: 50%;">
-                        </div>
-                        <div class="link-text" style="display: flex; flex-direction: column; justify-content: center; flex-grow: 1;">
-                            <div class="link-title" style="font-weight: 500; line-height: 1.2;">
-                                NUESTRA TIENDA
-                            </div>
-                            <div class="link-description" style="font-size: 0.875em; opacity: 0.8; margin-top: 2px; line-height: 1.3;">¡REGISTRATE! 10% Dto</div>
-                        </div>
-                    </div>
-                </a>
-            
-                <a href="https://tidd.ly/40M7Y58" class="link rounded-xl" target="_blank" rel="noopener noreferrer">
-                    <div class="link-content" style="display: flex; align-items: center;">
-                        <div class="link-icon"
-                            style="width: 24px; height: 24px; margin-right: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <img src="https://flowbite.com/docs/images/logo.svg" alt="Creality Falcon A1 Pro icon"
-                                class="external-icon" style="width: 100%; height: 100%; border-radius: 50%;">
-                        </div>
-                        <div class="link-text" style="display: flex; flex-direction: column; justify-content: center; flex-grow: 1;">
-                            <div class="link-title" style="font-weight: 500; line-height: 1.2;">
-                                Creality Falcon A1 Pro
-                            </div>
-                            <div class="link-description" style="font-size: 0.875em; opacity: 0.8; margin-top: 2px; line-height: 1.3;">Primeras unidades -40% OFF</div>
-                        </div>
-                    </div>
-                </a>
-            
-                <a href="https://wecreateu.sjv.io/RGorvR" class="link rounded-xl" target="_blank" rel="noopener noreferrer">
-                    <div class="link-content" style="display: flex; align-items: center;">
-                        <div class="link-icon"
-                            style="width: 24px; height: 24px; margin-right: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <img src="https://flowbite.com/docs/images/logo.svg" alt="WeCreat Vision 20W icon"
-                                class="external-icon" style="width: 100%; height: 100%; border-radius: 50%;">
-                        </div>
-                        <div class="link-text" style="display: flex; flex-direction: column; justify-content: center; flex-grow: 1;">
-                            <div class="link-title" style="font-weight: 500; line-height: 1.2;">
-                                WeCreat Vision 20W
-                            </div>
-                            <div class="link-description" style="font-size: 0.875em; opacity: 0.8; margin-top: 2px; line-height: 1.3;">Código: "mrprinteto100" -100€</div>
-                        </div>
-                    </div>
-                </a>
             
                 <a href="http://shrsl.com/4wbh4" class="link rounded-xl" target="_blank" rel="noopener noreferrer">
                     <div class="link-content" style="display: flex; align-items: center;">
                         <div class="link-icon"
-                            style="width: 24px; height: 24px; margin-right: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <img src="https://flowbite.com/docs/images/logo.svg" alt="LaserPecker LP4 Dual Laser icon"
+                            style="width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <img src="https://static.foto321.com/2024/06/LaserPecker-4-Deluxe-Version-2.jpg" alt="LaserPecker LP4 5% Dto  icon"
                                 class="external-icon" style="width: 100%; height: 100%; border-radius: 50%;">
                         </div>
+
                         <div class="link-text" style="display: flex; flex-direction: column; justify-content: center; flex-grow: 1;">
                             <div class="link-title" style="font-weight: 500; line-height: 1.2;">
-                                LaserPecker LP4 Dual Laser
+                                LaserPecker LP4 5% Dto 
                             </div>
-                            <div class="link-description" style="font-size: 0.875em; opacity: 0.8; margin-top: 2px; line-height: 1.3;">Código: "MrPrinteto" 5% Dto</div>
+                            <div class="link-description" style="font-size: 0.875em; opacity: 0.8; margin-top: 2px; line-height: 1.3;">Código: <b>MrPrinteto</b></div>
                         </div>
                     </div>
                 </a>
@@ -317,15 +343,16 @@
                 <a href="https://shrsl.com/4smxp" class="link rounded-xl" target="_blank" rel="noopener noreferrer">
                     <div class="link-content" style="display: flex; align-items: center;">
                         <div class="link-icon"
-                            style="width: 24px; height: 24px; margin-right: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <img src="https://flowbite.com/docs/images/logo.svg" alt="Creality K2 Plus Combo icon"
+                            style="width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <img src="https://antinsky.com/cdn/shop/files/4_13586234-904f-4b7f-bdae-d00ff22c42c5_1024x.png?v=1729576436" alt="Creality K2 Plus Combo icon"
                                 class="external-icon" style="width: 100%; height: 100%; border-radius: 50%;">
                         </div>
+
                         <div class="link-text" style="display: flex; flex-direction: column; justify-content: center; flex-grow: 1;">
                             <div class="link-title" style="font-weight: 500; line-height: 1.2;">
                                 Creality K2 Plus Combo
                             </div>
-                            
+                            <div class="link-description" style="font-size: 0.875em; opacity: 0.8; margin-top: 2px; line-height: 1.3;"> </div>
                         </div>
                     </div>
                 </a>
@@ -333,10 +360,11 @@
                 <a href="https://shrsl.com/4wyqz" class="link rounded-xl" target="_blank" rel="noopener noreferrer">
                     <div class="link-content" style="display: flex; align-items: center;">
                         <div class="link-icon"
-                            style="width: 24px; height: 24px; margin-right: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <img src="https://flowbite.com/docs/images/logo.svg" alt="Creality Hi! icon"
+                            style="width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <img src="https://www.impresoras3d.com/wp-content/uploads/2025/03/Creality-Hi-01_PSD.jpg" alt="Creality Hi! icon"
                                 class="external-icon" style="width: 100%; height: 100%; border-radius: 50%;">
                         </div>
+
                         <div class="link-text" style="display: flex; flex-direction: column; justify-content: center; flex-grow: 1;">
                             <div class="link-title" style="font-weight: 500; line-height: 1.2;">
                                 Creality Hi!
