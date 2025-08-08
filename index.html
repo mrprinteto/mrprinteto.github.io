@@ -21,14 +21,28 @@
     <meta name="twitter:description" content="Impresión 3D y corte/grabado láser" />
     <meta name="twitter:site" content="@MrPrinteto" />
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YYK7MP2XYQ"></script>
+    <!-- Google tag (gtag.js) - Will be loaded conditionally after consent -->
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-YYK7MP2XYQ');
+    
+    // Function to initialize Google Analytics
+    function initializeGA() {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-YYK7MP2XYQ';
+        document.head.appendChild(script);
+        
+        script.onload = function() {
+            gtag('js', new Date());
+            gtag('config', 'G-YYK7MP2XYQ');
+        };
+    }
+    
+    // Check if user has already given consent
+    if (localStorage.getItem('ga-consent') === 'accepted') {
+        initializeGA();
+    }
     </script>
 
     <style>
@@ -293,6 +307,117 @@
                 font-size: 1.75rem;
             }
         }
+        
+        /* Cookie Consent Banner Styles */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(42, 42, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid #404040;
+            padding: 20px;
+            z-index: 1000;
+            display: none;
+            animation: slideUp 0.3s ease-out;
+        }
+        
+        .cookie-banner.show {
+            display: block;
+        }
+        
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        
+        .cookie-text {
+            flex: 1;
+            color: #ffffff;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        
+        .cookie-text a {
+            color: #8b5cf6;
+            text-decoration: none;
+        }
+        
+        .cookie-text a:hover {
+            text-decoration: underline;
+        }
+        
+        .cookie-buttons {
+            display: flex;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+        
+        .cookie-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 80px;
+        }
+        
+        .cookie-btn-accept {
+            background: #10b981;
+            color: white;
+        }
+        
+        .cookie-btn-accept:hover {
+            background: #059669;
+            transform: translateY(-1px);
+        }
+        
+        .cookie-btn-decline {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid #404040;
+        }
+        
+        .cookie-btn-decline:hover {
+            background: #404040;
+            transform: translateY(-1px);
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .cookie-buttons {
+                justify-content: center;
+                width: 100%;
+            }
+            
+            .cookie-btn {
+                flex: 1;
+                max-width: 120px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -412,7 +537,76 @@
         </div>
     </div>
     
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <strong>🍪 Usamos cookies</strong><br>
+                <p>Utilizamos Google Analytics para mejorar la experiencia de nuestro sitio web y ofrecer contenido relevante para nuestra comunidad.</p>
+                <a href="https://policies.google.com/privacy" target="_blank">Más información sobre privacidad</a>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-decline" onclick="handleCookieConsent(false)">
+                    Rechazar
+                </button>
+                <button class="cookie-btn cookie-btn-accept" onclick="handleCookieConsent(true)">
+                    Aceptar
+                </button>
+            </div>
+        </div>
+    </div>
+    
     <script>
+        // Cookie Consent Functionality
+        function handleCookieConsent(accepted) {
+            const banner = document.getElementById('cookieBanner');
+            
+            if (accepted) {
+                localStorage.setItem('ga-consent', 'accepted');
+                // Initialize Google Analytics
+                initializeGA();
+            } else {
+                localStorage.setItem('ga-consent', 'declined');
+            }
+            
+            // Hide banner with animation
+            banner.style.transform = 'translateY(100%)';
+            banner.style.opacity = '0';
+            setTimeout(() => {
+                banner.classList.remove('show');
+            }, 300);
+        }
+        
+        // Show cookie banner if consent hasn't been given
+        function showCookieBanner() {
+            const consent = localStorage.getItem('ga-consent');
+            if (!consent) {
+                const banner = document.getElementById('cookieBanner');
+                banner.classList.add('show');
+            }
+        }
+        
+        // Initialize Google Analytics (moved from head)
+        function initializeGA() {
+            if (window.gtag) return; // Already initialized
+            
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-YYK7MP2XYQ';
+            document.head.appendChild(script);
+            
+            script.onload = function() {
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                window.gtag = gtag;
+                gtag('js', new Date());
+                gtag('config', 'G-YYK7MP2XYQ');
+            };
+        }
+        
+        // Show banner when page loads
+        document.addEventListener('DOMContentLoaded', showCookieBanner);
+        
         // Add click tracking and smooth animations
         document.querySelectorAll('.link').forEach(link => {
             link.addEventListener('click', function(e) {
